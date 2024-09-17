@@ -1,25 +1,26 @@
+#if UNITY_EDITOR
+
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-[CustomEditor(typeof(CharacterManager))]
+[CustomEditor(typeof(Player))]
 public class CharacterManagerEditor : Editor
 {
     private const float MaxIconSize = 100f; // 최대 아이콘 크기
 
     public override void OnInspectorGUI()
     {
-        CharacterManager characterManager = (CharacterManager)target;
+        Player characterManager = (Player)target;
 
         // 기본 인스펙터를 그립니다.
         DrawDefaultInspector();
 
-        if (characterManager.GetPlayer.skills != null && characterManager.GetPlayer.skills.Count > 0)
+        if (characterManager.Stats.skills != null && characterManager.Stats.skills.Count > 0)
         {
             EditorGUILayout.LabelField("캐릭터 스킬 목록", EditorStyles.boldLabel);
 
-            foreach (var skill in characterManager.GetPlayer.skills)
+            foreach (var skill in characterManager.Stats.skills)
             {
                 if (skill == null) continue;
 
@@ -76,3 +77,5 @@ public class CharacterManagerEditor : Editor
         }
     }
 }
+
+#endif

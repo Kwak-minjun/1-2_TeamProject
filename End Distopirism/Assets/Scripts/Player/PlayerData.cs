@@ -4,8 +4,12 @@ using UnityEngine;
 
 
 [Serializable]
-public class Player
+public class PlayerData
 {
+    // constraints
+    public const float MAX_MENTALITY = 100f;    // 최대 정신력
+    public const float MAX_PROBABILITY = 0.6f;  // 최대 확률 (60%)
+
     public string CharName;
 
     // 채력
@@ -15,8 +19,7 @@ public class Player
     public int hp;
 
     // 방어 레벨
-    private int defLevel;
-    public int DefLevel => defLevel;
+    public int DefLevel;
 
     // 공격
     public int DmgLevel;
@@ -34,8 +37,8 @@ public class Player
     public int DmgUp;   // 코인 성공 시 1개당 데미지 증가값
 
     // 코인
-    public int MaxCoin; //최대 코인량
-    public int Coin;    //동일 피해 합 시작 시 인식할 코인 합 패배 시 1개씩 차감
+    public int MaxCoin; // 최대 코인량
+    public int Coin;    // 동일 피해 합 시작 시 인식할 코인 합 패배 시 1개씩 차감
 
     // 정신력
     public float MenTality = 100f;
@@ -48,5 +51,6 @@ public class Player
     public void Init()
     {
         hp = maxHp;
+        // TODO: Read yaml and set
     }
 }
